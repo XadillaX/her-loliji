@@ -8,6 +8,7 @@
 
 1. Node.js (http://nodejs.org/)
 2. 克隆本项目 (`$ git clone ssh://gitlab@gitlab.widget-inc.com:65422/xadillax/her-loliji.git`)
+3. 进入项目根目录安装依赖 (`$ npm install`)
 
 ### 开始执行
 
