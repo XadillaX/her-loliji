@@ -1,0 +1,56 @@
+#! /usr/bin/env node
+/**
+ * XadillaX created at 2015-05-25 20:10:15 With ♥
+ *
+ * Copyright (c) 2015 Huaban.com, all rights
+ * reserved.
+ */
+var Scarlet = require("scarlet-task");
+var path = require("path");
+var fs = require("fs");
+var opts = require("nomnom")
+    .option("output", {
+        abbr: "o",
+        default: __dirname + "/target/",
+        help: "output directory"
+    })
+    .option("prefix", {
+        abbr: "p",
+        default: "f_",
+        help: "rename prefix"
+    }).parse();
+
+var scarlet = new Scarlet(10);
+var output = opts.output;
+output = path.resolve(process.cwd(), output);
+
+function copy(taskObject) {
+    var filename = taskObject.task;
+    filename = __dirname + "/src/" + filename;
+    var target = output + "/" + opts.prefix + taskObject.task;
+
+    console.log("Renaming " + filename + "...");
+    fs.readFile(filename, function(err, buf) {
+        if(err) {
+            console.warn("× Failed at " + filename + ": " + err.message);
+            return scarlet.taskDone(taskObject);
+        }
+
+        fs.writeFile(target, buf, function(err) {
+            if(err) {
+                console.warn("× Failed at " + filename + ": " + err.message);
+            }
+            return scarlet.taskDone(taskObject);
+        });
+    });
+}
+
+var filenames = fs.readdirSync(__dirname + "/src");
+for(var i = 0; i < filenames.length; i++) {
+    scarlet.push(filenames[i], copy);
+}
+
+scarlet.afterFinish(filenames.length, function() {
+    console.log("All done. (" + filenames.length + ")");
+}, false);
+

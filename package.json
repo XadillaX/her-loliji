@@ -1,0 +1,22 @@
+{
+  "name": "loliji",
+  "version": "1.0.0",
+  "description": "Transform iOS emoji to Android picture ones.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://gitlab@gitlab.widget-inc.com:65422/xadillax/her-loliji.git"
+  },
+  "keywords": [
+    "萝莉"
+  ],
+  "author": "XadillaX",
+  "license": "MIT",
+  "dependencies": {
+    "nomnom": "^1.8.1",
+    "scarlet-task": "0.1.0-comment"
+  }
+}
