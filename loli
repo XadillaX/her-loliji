@@ -26,6 +26,8 @@ output = path.resolve(process.cwd(), output);
 
 function copy(taskObject) {
     var filename = taskObject.task;
+    if(!filename.endsWith(".png")) return scarlet.taskDone(taskObject);
+
     filename = __dirname + "/src/" + filename;
     var target = output + "/" + opts.prefix + taskObject.task;
 
