@@ -16,7 +16,7 @@ var opts = require("nomnom")
     })
     .option("prefix", {
         abbr: "p",
-        default: "f_",
+        default: "e_",
         help: "rename prefix"
     }).parse();
 
