@@ -5,6 +5,7 @@
  * Copyright (c) 2015 Huaban.com, all rights
  * reserved.
  */
+require("sugar");
 var Scarlet = require("scarlet-task");
 var path = require("path");
 var fs = require("fs");
